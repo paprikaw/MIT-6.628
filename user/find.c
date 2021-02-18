@@ -40,8 +40,7 @@ find(char *path, char *des)
   case T_FILE: // Base case
     if (strcmp (des, fmtname(path)) == 0)
       printf("%s\n", path);
-    return;
-
+    break;
   case T_DIR:
     if(strlen(path) + 1 + DIRSIZ + 1 > sizeof buf){
       printf("find: path too long\n");
