@@ -34,6 +34,7 @@ child_process (int input number)
   if (fork() = 0) { //Child process
     child_process(output_pipe);
   } else { //Parent process
+    // Close read end of output pipe to child
     close(output_pipe[0]);
     int input_num;
     while(read(input_pipe[0], &input_num, sizeof(int)) != 0){
@@ -41,6 +42,8 @@ child_process (int input number)
         write(output_pipe[1], &input_num, sizeof(int));
       }
     }
+
+    // Close used pipe end
     close(output_pipe[1]);
     close(input_pipe[0]);
     wait(0);
@@ -54,7 +57,7 @@ int main() {
   
   if (fork() == 0) { // Child
     child_process(p);
-  } else {Parent
+  } else { // Parent
     close(p[0]);
     // Input all the number into the child process
     for(int i = 2; i <= 35; i++) {
