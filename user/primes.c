@@ -12,8 +12,7 @@
 *         send n to right neighbor
 */
 void
-child_process (int input number)
-  int main(int *input_pipe) {
+child_process (int* input_pipe) {
   
   int output_pipe[2];// Pipe that process write to child
   int prime;
@@ -21,17 +20,17 @@ child_process (int input number)
   // Read from parent
   close(input_pipe[1]);
   // Base case: if there is no number received from left neighbor
-  if (read(input_pipe[0], &prime, sizeof(int)== 0)) {
+  if (read(input_pipe[0], &prime, sizeof(int)) == 0) {
     close(input_pipe[0]);
     exit(0);
   }
 
   // print prime
-  printf("%d\n", prime);
+  printf("prime %d\n", prime);
 
   // Make up a pipe to transfer data to child
   pipe(output_pipe);
-  if (fork() = 0) { //Child process
+  if (fork() == 0) { //Child process
     child_process(output_pipe);
   } else { //Parent process
     // Close read end of output pipe to child
