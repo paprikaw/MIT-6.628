@@ -10,7 +10,7 @@
 具体不同文件的作用:
 `trace.c`: 用户层实现的trace程序，arguments分别是需要追踪的system call和
 `usys.pl`: 将system call转化成汇编指令传递到内核层
-`syscall.c`: 
+`syscall.c`: System call 函数本身的实现 
 `sysproc.c`: 各种system call的具体实现
 `proc.c`: Process structure和一些其他实现
 
